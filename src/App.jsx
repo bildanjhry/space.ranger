@@ -671,14 +671,19 @@ function HeroSection() {
                     </div>
                   </a> */}
 
-                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl font-semibold tracking-tight md:text-5xl lg:mt-16 xl:text-[5.25rem]">
+                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl font-semibold tracking-tight md:text-5xl lg:mt-16 xl:text-[5rem]">
                     <TextEffect preset="blur" per="word" delay={0.2}>
                       Full Stack Dev trying to contribute to the future.
                     </TextEffect>
                   </h1>
-                  <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
+                  <button className='w-12 h-12 mt-9 rounded-full border border-white/20'>
+                    <p className='text-white/40 text-xl'>{"</>"}</p>
+                  </button>
+                  <p className="mx-auto mt-9 max-w-2xl text-balance text-4xl">
                     <TextEffect preset="slide" per="word" delay={0.5}>
-                      Building exceptional digital experiences with modern technologies and clean code
+                      Building exceptional application with modern technologies and clean code with 3+ years of experiences.
+                        I care most about the gap between a good idea and a product people actually trust performance, clarity, and the small details that make software feel considered rather
+              than assembled.
                     </TextEffect>
                   </p>
                 </AnimatedGroup>
