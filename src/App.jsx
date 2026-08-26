@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiDownload } from "react-icons/fi";
-import { VscGithubAlt } from "react-icons/vsc";
+import { FaLinkedinIn } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
+import { BiLogoGmail } from "react-icons/bi";
+import { FaWhatsapp } from "react-icons/fa";
 import { 
   ArrowRight, 
   ChevronRight, 
@@ -19,6 +21,9 @@ import {
 
 import { cn } from './lib/utils.js';
 const mono = { fontFamily: "'JetBrains Mono', ui-monospace, monospace" };
+
+import { Warp } from "@paper-design/shaders-react"
+
 
 function TextEffect({ 
   children, 
@@ -137,6 +142,62 @@ function FloatingPaths({ position }) {
     </div>
   );
 }
+
+
+function WarpShaderHero() {
+  return (
+    <main className="relative min-h-screen w-full overflow-hidden">
+      <div className='h-full w-full absolute z-10 bg-linear-to-t from-neutral-950 to-neutral-50/10'>
+
+      </div>
+      <div className="absolute inset-0">
+        <Warp
+          style={{ height: "100%", width: "100%" }}
+          proportion={0.45}
+          softness={1}
+          distortion={0.25}
+          swirl={0.6}
+          swirlIterations={10}
+          shape="checks"
+          shapeScale={0.1}
+          scale={1}
+          rotation={0}
+          speed={1}
+          colors={["hsl(222.2 4% 4.9%)", "hsl(888, 2%, 2%)", "hsl(777, 7%, 5%)", "hsl(666, 50%, 5%)"]}
+        />
+      </div>
+
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-8">
+        <div className="max-w-4xl w-full text-center space-y-8">
+          <h1 className="text-white text-5xl md:text-[7rem] font-sans font-black tracking-tighter text-balance">
+              <TextEffect preset="blur" per="word" delay={0.2}>
+                  Hello there, I'm Bildan Jauhary
+              </TextEffect>
+          </h1>
+{/* 
+          <p className="text-white/90 text-xl md:text-2xl font-sans font-light leading-relaxed max-w-3xl mx-auto">
+            Beautiful, performant shader effects that enhance your content without overwhelming it. Perfect for hero
+            sections, landing pages, and modern web experiences.
+          </p> */}
+
+          <div className="flex flex-col sm:flex-row justify-center items-center">
+          <button className="bg-white/90 
+               transition-all duration-300 
+              hover:-translate-y-0.75
+              mt-5
+              cursor-pointer bg-linear-to-r 
+              from-neutral to-neutral-700/30 font-[600] rounded-full 
+              flex gap-2 text-[15px] justify-center items-center w-52 h-11">
+                <FiDownload/>
+                <p>Download Resume</p>
+              </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
+}
+
 
 function BackgroundPaths({ title }) {
   const words = title.split(" ");
@@ -632,13 +693,11 @@ function TechStackTicker({
 }
 
 function HeroSection() {
-    const row1 = useMemo(() => [...STACK_ROW_1, ...STACK_ROW_1], []);
-  const row2 = useMemo(() => [...STACK_ROW_2, ...STACK_ROW_2], []);
   return (
     <>
       <HeroHeader />
       <main className="overflow-hidden dark:bg-neutral-950">
-              <div
+        <div
           aria-hidden
           className="z-[2] absolute inset-0 pointer-events-none isolate opacity-50 contain-strict hidden lg:block"
         >
@@ -646,10 +705,12 @@ function HeroSection() {
           <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
           <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
         </div>
-          <BackgroundPaths title="Hello there, I'm Bildan Jauhary" />
+
+        {/* <BackgroundPaths title="Hello there, I'm Bildan Jauhary" /> */}
+            <WarpShaderHero/>
     
         <section id="home">
-          <div className="relative py-24 md:py-36 ">
+          <div className="relative py-24 md:py-36 md:pb-18 ">
             <div className="mx-auto max-w-7xl px-6">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 <AnimatedGroup variants={transitionVariants}>
@@ -698,10 +759,63 @@ function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.6 }}
-          className="mb-10"
+          className="mb-0"
         >
         </motion.div>
 
+        <div className='w-52 h-52 mb-10 rounded-full bg-amber-50 flex justify-self-center'>
+
+        </div>
+
+            <section id="contact" className="relative px-6 py-28">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+          <h2 className="text-3xl sm:text-5xl font-semibold text-white mb-6">
+              <TextEffect preset="slide" per="word" delay={0.2}>
+                    Let's connect and build something out of this world.
+              </TextEffect>
+          
+          </h2>
+          <p className="text-white/50 mb-10 max-w-md mx-auto">
+            I'm currently open to new opportunities and interesting collaborations. Reach out and
+            I'll get back to you within a day or two.
+          </p>
+          
+               
+            <div
+            className="inline-block group relative mb-6 bg-gradient-to-b from-black/10 to-white/10 
+            dark:from-white/10 dark:to-black/10 p-1 rounded-full backdrop-blur-lg 
+            overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <Button
+              variant="ghost"
+              className="rounded-full px-8 py-6 text-md font-semibold backdrop-blur-md 
+              bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 
+              text-black dark:text-white transition-all duration-300 
+              group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10
+              hover:shadow-md dark:hover:shadow-neutral-800/50 cursor-pointer"
+            >
+              <BiLogoGmail className='relative bottom-px'/>
+              <span className="ml-2.5 opacity-90 group-hover:opacity-100 transition-opacity">
+                Gmail Me
+              </span>
+            </Button>
+          </div>
+ 
+          <div className="flex items-center justify-center gap-6">
+            {[
+              { icon: LuGithub, label: "Github" },
+              { icon: FaLinkedinIn, label: "LinkedIn" },
+              { icon: FaWhatsapp, label: "Whatsapp" },
+            ].map(({ icon: Icon, label }) => (
+              <a key={label} href="#" aria-label={label} 
+              className="text-white/30 hover:text-white/70
+               transition-colors">
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     <div className="relative overflow-hidden bg-background mb-10 py-6">
       <TechStackTicker/>
       {/* <motion.div
@@ -745,12 +859,18 @@ function HeroSection() {
           </div>
         </div>
       </section> */}
+
+
+
+  
+
         </section>
         <div className='h-20 flex flex-rows  justify-center gap-3 items-center 
         w-full text-white/60 border-t border-white/10'>
           <p className='font-black relative bottom-px'>space.ranger</p>
           <p className='text-sm text-white/30'>© 2026 All Rights Reserved.</p>
         </div>
+        
       </main>
     </>
   );
