@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiDownload } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
+import { IoPersonOutline } from "react-icons/io5";
 import { 
-  ArrowRight, 
-  ChevronRight, 
   Menu, 
   X, 
   Mail,
@@ -143,6 +142,142 @@ function FloatingPaths({ position }) {
   );
 }
 
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const projects = [
+  {
+    title: "BeliMudah",
+    description: "An e-commerce app designed to make it easy for users to discover, choose, and purchase products.",
+    link:"http://103.127.96.192:9202"
+  },
+  {
+    title: "ShortLik",
+    description: `A shortlink application that allows users to create, manage, and share shortened URLs easily.`,
+    link:"https://x-shrt.vercel.app"
+  },
+  {
+    title: "Pulse",
+    description: "A simple notes management app that helps users create, organize, and manage their notes easily.",
+  },
+  {
+    title: "Webcc Synergix",
+    description: "Streamline your workflow with our developer tools and documentation.",
+  },
+];
+
+ function FeaturedProjects() {
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section className="py-16 md:py-27 px-4 md:px-8 max-w-7xl mx-auto text-white/60">
+      {/* Header Section */}
+      <div className="flex justify-between items-end mb-8">
+        <div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+            Featured Projects
+          </h2>
+          <a href="https://github.com/bildanjhry" 
+          className="inline-flex items-center gap-1 text-sm font-medium hover:underline">
+            See github <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
+        
+        <div className="flex gap-2">
+          <button 
+            onClick={scrollLeft} 
+            className="p-2 rounded-lg bg-white bg-linear-to-r 
+            from-neutral to-neutral-700/30 hover:bg-gray-50 text-gray-700 transition-colors"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={scrollRight} 
+            className="p-2 bg-linear-to-r 
+            from-neutral to-neutral-700/30 rounded-lg bg-white hover:bg-gray-50 
+            text-gray-700 transition-colors"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* Carousel Section */}
+      <div 
+        ref={scrollRef} 
+        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+      >
+        {projects.map((project, index) => (
+          <div 
+            key={index} 
+            className="min-w-[300px] group overflow-hidden md:min-w-[400px] snap-start flex flex-col"
+          >
+            {/* Image / Logo Placeholder */}
+            <div className='overflow-hidden h-80 mb-6 rounded-2xl'>
+              <div className="bg-gray-200/80 bg-linear-to-r
+              transition-all duration-300 group-hover:scale-110 
+                from-neutral to-neutral-700/30 rounded-2xl 
+                aspect-[4/3] flex items-center justify-center overflow-hidden h-80">
+                {/* Recreating the hexagonal logo with stripes */}
+                <div className="relative w-24 h-24 ">
+                  <div className="absolute inset-0 
+                  [clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]">
+                    <div className="absolute inset-0 flex">
+                      {[...Array(10)].map((_, i) => (
+                        <div key={i} className="flex-1 h-full bg-white bg-linear-to-r 
+                        from-neutral to-neutral-700/30 opacity-40" style={{width: '4px'}} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Card Content */}
+            <h3 className="text-2xl font-semibold  mb-3">
+              {project.title}
+            </h3>
+            <p className="text-gray-500 leading-relaxed mb-6">
+              {project.description}
+            </p>
+            
+            <div className="flex items-center gap-3">
+              <a 
+              className='h-9 w-fit px-2 gap-2 rounded-full flex justify-center items-center 
+               border-white/20 text-[14px]'
+              href="">
+                <LuGithub/>
+                <p>Source</p>
+              </a>
+              <a href={project?.link} 
+              target="_blank"
+              className="mt-auto bg-white text-black border w-25 flex 
+              justify-center h-9 rounded-full items-center gap-2 font-medium 
+              text-[14px] hover:gap-3 transition-all bg-linear-to-r 
+                from-neutral to-neutral-700/30">
+                Visit <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 
 function WarpShaderHero() {
   return (
@@ -169,7 +304,7 @@ function WarpShaderHero() {
 
       <div className="relative z-10 min-h-screen flex items-center justify-center px-8">
         <div className="max-w-4xl w-full text-center space-y-8">
-          <h1 className="text-white text-5xl md:text-[7rem] font-sans font-black tracking-tighter text-balance">
+          <h1 className="text-white text-6xl md:text-[7rem] font-sans font-black tracking-tighter text-balance">
               <TextEffect preset="blur" per="word" delay={0.2}>
                   Hello there, I'm Bildan Jauhary
               </TextEffect>
@@ -182,7 +317,7 @@ function WarpShaderHero() {
 
           <div className="flex flex-col sm:flex-row justify-center items-center">
           <button className="bg-white/90 
-               transition-all duration-300 
+              transition-all duration-300 
               hover:-translate-y-0.75
               mt-5
               cursor-pointer bg-linear-to-r 
@@ -681,7 +816,8 @@ function TechStackTicker({
             <span
               key={i}
               style={mono}
-              className="text-md text-zinc-500 whitespace-nowrap border border-white/10 rounded-full px-4.5 py-1.5 shrink-0"
+              className="text-md text-zinc-500 whitespace-nowrap border border-white/10 
+              rounded-full px-4.5 py-1.5 shrink-0"
             >
               {s}
             </span>
@@ -732,7 +868,8 @@ function HeroSection() {
                     </div>
                   </a> */}
 
-                  <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl font-semibold tracking-tight md:text-5xl lg:mt-16 xl:text-[5rem]">
+                  <h1 className="mt-5 md:mt-8 max-w-4xl mx-auto text-balance text-5xl font-semibold tracking-tight 
+                  md:text-5xl lg:mt-16 xl:text-[5rem]">
                     <TextEffect preset="blur" per="word" delay={0.2}>
                       Full Stack Dev trying to contribute to the future.
                     </TextEffect>
@@ -740,11 +877,11 @@ function HeroSection() {
                   <button className='w-12 h-12 mt-9 rounded-full border border-white/20'>
                     <p className='text-white/40 text-xl'>{"</>"}</p>
                   </button>
-                  <p className="mx-auto mt-9 max-w-2xl text-balance text-4xl">
+                  <p className="mx-auto mt-9 max-w-2xl text-balance text-xl md:text-3xl">
                     <TextEffect preset="slide" per="word" delay={0.5}>
                       Building exceptional application with modern technologies and clean code with 3+ years of experiences.
-                        I care most about the gap between a good idea and a product people actually trust performance, clarity, and the small details that make software feel considered rather
-              than assembled.
+                      I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
+                      small details that make software feel considered rather than assembled.
                     </TextEffect>
                   </p>
                 </AnimatedGroup>
@@ -763,11 +900,15 @@ function HeroSection() {
         >
         </motion.div>
 
-        <div className='w-52 h-52 mb-10 rounded-full bg-amber-50 flex justify-self-center'>
+        {/* <div className='w-52 h-52 mb-10 rounded-full bg-amber-50 flex
+        justify-center items-center text-black/40 justify-self-center'>
+            <IoPersonOutline size={100}/>
+        </div> */}
 
-        </div>
+        <FeaturedProjects/>
 
-            <section id="contact" className="relative px-6 py-28">
+
+        <section id="contact" className="relative px-6 py-28">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
           <h2 className="text-3xl sm:text-5xl font-semibold text-white mb-6">
               <TextEffect preset="slide" per="word" delay={0.2}>
@@ -780,7 +921,6 @@ function HeroSection() {
             I'll get back to you within a day or two.
           </p>
           
-               
             <div
             className="inline-block group relative mb-6 bg-gradient-to-b from-black/10 to-white/10 
             dark:from-white/10 dark:to-black/10 p-1 rounded-full backdrop-blur-lg 
@@ -860,9 +1000,6 @@ function HeroSection() {
         </div>
       </section> */}
 
-
-
-  
 
         </section>
         <div className='h-20 flex flex-rows  justify-center gap-3 items-center 
