@@ -673,7 +673,7 @@ function HeroSection() {
 
                   <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl font-semibold tracking-tight md:text-5xl lg:mt-16 xl:text-[5.25rem]">
                     <TextEffect preset="blur" per="word" delay={0.2}>
-                      Full Stack Developer to tend build the future
+                      Full Stack Dev trying to contribute to the future.
                     </TextEffect>
                   </h1>
                   <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
