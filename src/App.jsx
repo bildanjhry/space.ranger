@@ -250,7 +250,7 @@ const projects = [
             <h3 className="text-2xl font-semibold  mb-3">
               {project.title}
             </h3>
-            <p className="text-gray-500 leading-relaxed mb-6">
+            <p className="text-white/40 leading-relaxed mb-6">
               {project.description}
             </p>
             
@@ -877,7 +877,7 @@ function HeroSection() {
                   <button className='w-12 h-12 mt-9 rounded-full border border-white/20'>
                     <p className='text-white/40 text-xl'>{"</>"}</p>
                   </button>
-                  <p className="mx-auto mt-9 max-w-2xl text-balance text-xl md:text-3xl">
+                  <p className="mx-auto mt-9 max-w-2xl text-balance text-xl md:text-[1.4rem]">
                     <TextEffect preset="slide" per="word" delay={0.5}>
                       Building exceptional application with modern technologies and clean code with 3+ years of experiences.
                       I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
