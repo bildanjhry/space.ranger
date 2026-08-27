@@ -947,7 +947,7 @@ function TechStackTicker({
   );
 }
 
-
+import { FaConnectdevelop } from "react-icons/fa";
 
 function SchemaCard() {
   const canvasRef = useRef(null);
@@ -1031,10 +1031,13 @@ function SchemaCard() {
           </h2>
           <div className="text-white/80 mb-10 max-w-md mx-auto flex flex-col
           justify-center items-center gap-2 bg-white/10 relative p-5 rounded-2xl backdrop-blur-md">
+              <div className='absolute -top-3 h-6 w-6 rounded-full flex justify-center items-center
+               bg-white bg-linear-to-r from-transparent to-neutral-300'>
+                <FaConnectdevelop size={20} className='text-black'/>
+              </div>  
               <p className=''>
                 I'm currently open to new opportunities and interesting collaborations. Reach out and
                 I'll get back to you within a day or two.
-                
               </p>
           </div>
           
@@ -1073,8 +1076,6 @@ function SchemaCard() {
           </div>
         </div>
 
-
-
       </section>
 
       </div>
@@ -1100,7 +1101,7 @@ function HeroSection() {
             <WarpShaderHero/>
     
         <section id="home">
-          <div className="relative py-24 md:py-36 md:pb-18 ">
+          <div className="relative py-22 md:py-36 ">
             <div className="mx-auto max-w-7xl px-6">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 <AnimatedGroup variants={transitionVariants}>
@@ -1121,24 +1122,29 @@ function HeroSection() {
                       </div>
                     </div>
                   </a> */}
+                  <button className='w-14 h-14 mt-9 rounded-full border border-white/20'>
+                    <p className='text-white/40 text-2xl'>{"</>"}</p>
+                  </button>
 
                   <h1 className="mt-5 md:mt-8 max-w-4xl mx-auto text-balance text-5xl font-semibold tracking-tight 
-                  md:text-5xl lg:mt-16 xl:text-[5rem]">
+                  md:text-5xl lg:mt-8 xl:text-[5rem]">
                     <TextEffect preset="blur" per="word" delay={0.2}>
                       Full Stack Dev trying to contribute to the future.
                     </TextEffect>
                   </h1>
-                  <button className='w-12 h-12 mt-9 rounded-full border border-white/20'>
-                    <p className='text-white/40 text-xl'>{"</>"}</p>
-                  </button>
-                  <p className="mx-auto mt-9 max-w-2xl text-balance text-xl md:text-[1.4rem]">
-                    <TextEffect preset="slide" per="word" delay={0.5}>
+                  <p className="mx-auto mt-5 max-w-2xl text-balance text-white/70 text-xl md:text-[1.2rem]">
                       Building exceptional application with modern technologies and clean code with 3+ years of experiences.
-                      I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
-                      small details that make software feel considered rather than assembled.
-                    </TextEffect>
                   </p>
                 </AnimatedGroup>
+                  {/* <p className="mx-auto mt-7 max-w-2xl text-balance text-xl md:text-2xl">
+                    <TextEffect preset="slide" per="word" delay={0.5}>
+                      "I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
+                      small details that make software feel considered rather than assembled."
+                    </TextEffect>
+                  </p> */}
+                  <div className="w-30 mt-10 h-1 border-b justify-self-center border-white/40">
+
+                  </div>
 
               </div>
             </div>
@@ -1154,11 +1160,11 @@ function HeroSection() {
         >
         </motion.div>
 
-        {/* <div className='w-52 h-52 mb-10 rounded-full bg-amber-50 flex
+        {/* <div className='w-32 h-32 mb-18 rounded-full bg-amber-50 flex
         justify-center items-center text-black/40 justify-self-center'>
-            <IoPersonOutline size={100}/>
+            <IoPersonOutline size={30}/>
         </div> */}
-            <div className="relative overflow-hidden bg-background mb-10 py-6">
+      <div className="relative overflow-hidden bg-background mb-10 py-6">
       <TechStackTicker/>
       {/* <motion.div
         className="flex whitespace-nowrap"
@@ -1185,9 +1191,30 @@ function HeroSection() {
 
         <JourneyTimeline/>
 
+            <section className='flex flex-col gap-3 w-full py-20 items-center justify-center'>
+              <p className="mx-auto mt-7 flex justify-center items-center w-[90%] md:max-w-4xl text-center text-xl 
+              md:text-4xl ">
+                  <TextEffect preset="slide" per="word" delay={0.5}>
+                        "I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
+                        small details that make software feel considered rather than assembled."
+                  </TextEffect>
+              </p>
+              <div className="w-[60%] md:w-100 mt-7 h-px justify-self-center bg-linear-to-r 
+              from-white/5 via-white/40 to-white/5">
+
+              </div>
+              <p className='text-white/80 mt-7 text-4xl'>Bildan Jauhary</p>
+              <p className='text-white/50 relative bottom-2 text-xl'>@spaceranger</p>
+              <div className='w-28 h-28 mt-2 rounded-full bg-amber-50 flex
+              justify-center items-center overflow-hidden text-black/40 justify-self-center'>
+                <IoPersonOutline size={30}/>
+                <img src="fix.png" 
+                className='z-11 top-10'
+                alt="" srcset="" />
+              </div>
+            </section>
         <SchemaCard/>
 
-      
     <div className="relative overflow-hidden bg-background mb-10 py-6">
       <TechStackTicker/>
       {/* <motion.div
