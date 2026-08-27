@@ -425,6 +425,122 @@ function BackgroundPaths({ title }) {
 }
 
 
+import { Compass, Clock, Heart } from 'lucide-react';
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { RiPushpin2Line } from "react-icons/ri";
+
+const journeySteps = [
+  { 
+    id: 1, 
+    title: "Koda Tech Academy",
+    type:"Project Based",
+    duration:"May 2026 - Aug 2026",
+    role:"Fullstack Engineer",
+    description:
+    [
+      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
+      'Integrated product listing, cart management, and user authentication using JWT.',
+      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
+      'Implementing REST API with Gin-gonic and Express.js.',
+      'Use PostgreSQL with database migrations.'
+    ],
+    icon: RiPushpin2Line },
+  { 
+    id: 2, 
+    title: "Jaring Synergi Mandiri",
+    type:"Fulltime", 
+    duration:"Jan 2023 - Jan 2025",
+    role:"Frontend Developer",
+    description:
+    [
+      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
+      'Integrated product listing, cart management, and user authentication using JWT.',
+      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
+      'Implementing REST API with Gin-gonic and Express.js.',
+      'Use PostgreSQL with database migrations.'
+    ], icon: RiPushpin2Line },
+  { 
+    id: 3, 
+    title: "Dumbways.id", 
+    type:"Project Based",
+    duration:"Sep 2022",
+    role:"Fullstack Developer",
+    description:
+    [
+      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
+      'Integrated product listing, cart management, and user authentication using JWT.',
+      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
+      'Implementing REST API with Gin-gonic and Express.js.',
+      'Use PostgreSQL with database migrations.'
+    ], icon: RiPushpin2Line },
+];
+
+function JourneyTimeline() {
+  return (
+    <div className='w-full flex justify-center my-10'>
+      <section className="py-16 px-4 md:px-1  w-[80%]">
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-white/60 mb-4 tracking-tight">
+            The experiences journey
+          </h2>
+          <p className="text-white/60 max-w-2xl text-lg">
+            My experiences journey so far.
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* Central Vertical Line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/40 transform -translate-x-1/2" />
+
+          <div className="space-y-12">
+            {journeySteps.map((step, index) => (
+              <div key={step.id} className={`relative flex flex-col md:flex-row items-start gap-4 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
+                
+                {/* Icon Node */}
+                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 bg-white
+                 bg-linear-to-r from-neutral-300/60 to-neutral-950/30 
+                 p-2 rounded-full border border-white/30 z-10">
+                  <div className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center">
+                    <step.icon className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className={`ml-12 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-1' : 'md:pl-1'}`}>
+                  <div className="bg-linear-to-r from-neutral-900 to-neutral-950 
+                  hover:bg-gray-100 transition-colors p-7 rounded-2xl border border-neutral-800 shadow-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-semibold text-white/60 tracking-wide">{step.type}</span>
+                      <span className='text-sm font-semibold text-white/60 tracking-wide'>{step.duration}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-white/60 ">{step.title}</h3>
+                    <p className=' text-white/70 mb-4'>{step.role}</p>
+                    <ul className='flex flex-col gap-2'>
+                      {step.description.map((item, index) => (
+                        <li key={index} className='text-white/50 leading-relaxed flex gap-2'>
+                          <div className='h-5 w-5 relative mt-3
+                          shrink-0 rounded-full flex justify-center items-center text-black/70 bg-white bg-linear-to-r from-neutral-200 to-neutral-400'>
+                          <RiPushpin2Line size={12} className='shrink-0 relative'/>
+
+                          </div>
+                          <p className='bg-amber-50/5 
+                        py-2 px-3 rounded-lg '>{item}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
+
+
 // ==================== BUTTON COMPONENT ====================
 const Button = React.forwardRef(({ 
   className, 
@@ -470,6 +586,9 @@ const Button = React.forwardRef(({
     </Comp>
   );
 });
+
+
+
 
 // // ==================== ANIMATED GROUP COMPONENT ====================
 // const defaultContainerVariants = {
@@ -828,6 +947,141 @@ function TechStackTicker({
   );
 }
 
+
+
+function SchemaCard() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let time = 0;
+    const waveData = Array.from({ length: 8 }).map(() => ({
+      value: Math.random() * 0.5 + 0.1,
+      targetValue: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.02 + 0.01
+    }));
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function updateWaveData() {
+      waveData.forEach(data => {
+        if (Math.random() < 0.01) data.targetValue = Math.random() * 0.7 + 0.1;
+        const diff = data.targetValue - data.value;
+        data.value += diff * data.speed;
+      });
+    }
+
+    function draw() {
+      ctx.fillStyle = 'hsl(0 0% 3.9%)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      waveData.forEach((data, i) => {
+        const freq = data.value * 7;
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x++) {
+          const nx = (x / canvas.width) * 2 - 1;
+          const px = nx + i * 0.04 + freq * 0.03;
+          const py = Math.sin(px * 10 + time) * Math.cos(px * 2) * freq * 0.1 * ((i + 1) / 8);
+          const y = (py + 1) * canvas.height / 2;
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        const intensity = Math.min(1, freq * 0.3);
+        const r = 79 + intensity * 120;
+        const g = 70 + intensity * 130;
+        const b = 229;
+        ctx.lineWidth = 1 + i * 0.3;
+        ctx.strokeStyle = `rgba(${r},${g},${b},0.6)`;
+        ctx.shadowColor = `rgba(${r},${g},${b},0.5)`;
+        ctx.shadowBlur = 5;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      });
+    }
+
+    function animate() {
+      time += 0.02;
+      updateWaveData();
+      draw();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animate();
+
+    return () => window.removeEventListener('resize', resizeCanvas);
+  }, []);
+
+  return (
+    <>
+      <canvas ref={canvasRef} className="w-full h-200 absolute bg-transparent" />
+      <div className="relative flex items-center justify-center w-full h-200 bg-transparent bottom-0 p-4 z-">
+
+      <section id="contact" className=" px-6 py-28">
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+          <h2 className="text-3xl sm:text-6xl font-semibold text-white mb-6">
+              <TextEffect preset="slide" per="word" delay={0.2}>
+                    Let's connect and build something out of this world.
+              </TextEffect>
+          
+          </h2>
+          <div className="text-white/80 mb-10 max-w-md mx-auto flex flex-col
+          justify-center items-center gap-2 bg-white/10 relative p-5 rounded-2xl backdrop-blur-md">
+              <p className=''>
+                I'm currently open to new opportunities and interesting collaborations. Reach out and
+                I'll get back to you within a day or two.
+                
+              </p>
+          </div>
+          
+            <div
+            className="inline-block group relative mb-6 bg-gradient-to-b from-black/10 to-white/10 
+            dark:from-white/10 dark:to-black/10 p-1 rounded-full backdrop-blur-lg 
+            overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <Button
+              variant="ghost"
+              className="rounded-full px-8 py-6 text-md font-semibold backdrop-blur-md 
+              bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 
+              text-black dark:text-white transition-all duration-300 
+              group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10
+              hover:shadow-md dark:hover:shadow-neutral-800/50 cursor-pointer"
+            >
+              <BiLogoGmail className='relative bottom-px'/>
+              <span className="ml-2.5 opacity-90 group-hover:opacity-100 transition-opacity">
+                Gmail Me
+              </span>
+            </Button>
+          </div>
+ 
+          <div className="flex items-center justify-center gap-6">
+            {[
+              { icon: LuGithub, label: "Github" },
+              { icon: FaLinkedinIn, label: "LinkedIn" },
+              { icon: FaWhatsapp, label: "Whatsapp" },
+            ].map(({ icon: Icon, label }) => (
+              <a key={label} href="#" aria-label={label} 
+              className="text-white/30 hover:text-white/70
+               transition-colors">
+                <Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+
+
+      </section>
+
+      </div>
+    </>
+  );
+}
+
 function HeroSection() {
   return (
     <>
@@ -904,58 +1158,36 @@ function HeroSection() {
         justify-center items-center text-black/40 justify-self-center'>
             <IoPersonOutline size={100}/>
         </div> */}
+            <div className="relative overflow-hidden bg-background mb-10 py-6">
+      <TechStackTicker/>
+      {/* <motion.div
+        className="flex whitespace-nowrap"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        style={{ willChange: "transform" }}
+      >
+        {duplicatedTechs.map((tech, index) => (
+          <span
+            key={index}
+            className="text-md text-white border border-border/30 rounded-full px-4 py-1.5 mx-3"
+          >
+            {tech}
+          </span>
+        ))}
+      </motion.div> */}
+    </div>
 
         <FeaturedProjects/>
 
+        <JourneyTimeline/>
 
-        <section id="contact" className="relative px-6 py-28">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-          <h2 className="text-3xl sm:text-5xl font-semibold text-white mb-6">
-              <TextEffect preset="slide" per="word" delay={0.2}>
-                    Let's connect and build something out of this world.
-              </TextEffect>
-          
-          </h2>
-          <p className="text-white/50 mb-10 max-w-md mx-auto">
-            I'm currently open to new opportunities and interesting collaborations. Reach out and
-            I'll get back to you within a day or two.
-          </p>
-          
-            <div
-            className="inline-block group relative mb-6 bg-gradient-to-b from-black/10 to-white/10 
-            dark:from-white/10 dark:to-black/10 p-1 rounded-full backdrop-blur-lg 
-            overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300"
-          >
-            <Button
-              variant="ghost"
-              className="rounded-full px-8 py-6 text-md font-semibold backdrop-blur-md 
-              bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 
-              text-black dark:text-white transition-all duration-300 
-              group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10
-              hover:shadow-md dark:hover:shadow-neutral-800/50 cursor-pointer"
-            >
-              <BiLogoGmail className='relative bottom-px'/>
-              <span className="ml-2.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                Gmail Me
-              </span>
-            </Button>
-          </div>
- 
-          <div className="flex items-center justify-center gap-6">
-            {[
-              { icon: LuGithub, label: "Github" },
-              { icon: FaLinkedinIn, label: "LinkedIn" },
-              { icon: FaWhatsapp, label: "Whatsapp" },
-            ].map(({ icon: Icon, label }) => (
-              <a key={label} href="#" aria-label={label} 
-              className="text-white/30 hover:text-white/70
-               transition-colors">
-                <Icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+        <SchemaCard/>
+
+      
     <div className="relative overflow-hidden bg-background mb-10 py-6">
       <TechStackTicker/>
       {/* <motion.div
@@ -978,6 +1210,7 @@ function HeroSection() {
         ))}
       </motion.div> */}
     </div>
+
 
         {/* <section className="relative mb-10  py-6 overflow-hidden flex flex-col gap-3">
         <div className="flex overflow-hidden">
