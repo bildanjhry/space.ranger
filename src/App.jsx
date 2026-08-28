@@ -6,6 +6,7 @@ import { LuGithub } from "react-icons/lu";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
+import { GrLocationPin } from "react-icons/gr";
 import { 
   Menu, 
   X, 
@@ -1192,19 +1193,23 @@ function HeroSection() {
         <JourneyTimeline/>
 
             <section className='flex flex-col gap-3 w-full py-20 items-center justify-center'>
+              <p className='text-white/60 font-semibold'>space.ranger</p>
               <p className="mx-auto mt-7 flex justify-center items-center w-[90%] md:max-w-4xl text-center text-xl 
-              md:text-4xl ">
-                  <TextEffect preset="slide" per="word" delay={0.5}>
-                        "I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
-                        small details that make software feel considered rather than assembled."
-                  </TextEffect>
+              md:text-4xl text-white/70">
+                "I care most about the gap between a good idea and a product people actually trust performance, clarity, and the 
+                small details that make software feel considered rather than assembled."
               </p>
               <div className="w-[60%] md:w-100 mt-7 h-px justify-self-center bg-linear-to-r 
-              from-white/5 via-white/40 to-white/5">
+              from-neutral-700/5 via-white/40 to-neutral-700/5">
 
               </div>
-              <p className='text-white/80 mt-7 text-4xl'>Bildan Jauhary</p>
-              <p className='text-white/50 relative bottom-2 text-xl'>@spaceranger</p>
+              <p className='text-white/70 mt-7 text-4xl'>Bildan Jauhary</p>
+              <p className='text-white/50 relative bottom-2 text-xl flex items-center gap-1'>
+                <span>
+                  <GrLocationPin size={20}/>
+                </span>
+                Bogor, Indonesia
+              </p>
               <div className='w-28 h-28 mt-2 rounded-full bg-amber-50 flex
               justify-center items-center overflow-hidden text-black/40 justify-self-center'>
                 <IoPersonOutline size={30}/>
