@@ -159,10 +159,11 @@ const projects = [
   {
     title: "Pulse",
     description: "A simple notes management app that helps users create, organize, and manage their notes easily.",
+    link:"https://pulse-notex.vercel.app"
   },
   {
     title: "Webcc Synergix",
-    description: "Streamline your workflow with our developer tools and documentation.",
+    description: "An omnichannel system to handle ticketing. Integrate Communication platform, such as WA, IG, Phone, Email and Sms.",
   },
 ];
 
