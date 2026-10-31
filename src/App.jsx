@@ -23,7 +23,8 @@ import { cn } from './lib/utils.js';
 const mono = { fontFamily: "'JetBrains Mono', ui-monospace, monospace" };
 
 import { Warp } from "@paper-design/shaders-react"
-
+import JourneyTimeline from './components/Journey.jsx';
+import FeaturedProjects from './components/Project.jsx';
 
 function TextEffect({ 
   children, 
@@ -145,140 +146,140 @@ function FloatingPaths({ position }) {
 
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const projects = [
-  {
-    title: "BeliMudah",
-    description: "An e-commerce app designed to make it easy for users to discover, choose, and purchase products.",
-    link:"http://103.127.96.192:9202"
-  },
-  {
-    title: "ShortLik",
-    description: `A shortlink application that allows users to create, manage, and share shortened URLs easily.`,
-    link:"https://x-shrt.vercel.app"
-  },
-  {
-    title: "Pulse",
-    description: "A simple notes management app that helps users create, organize, and manage their notes easily.",
-    link:"https://pulse-notex.vercel.app"
-  },
-  {
-    title: "Webcc Synergix",
-    description: "An omnichannel system to handle ticketing. Integrate Communication platform, such as WA, IG, Phone, Email and Sms.",
-  },
-];
+// const projects = [
+//   {
+//     title: "BeliMudah",
+//     description: "An e-commerce app designed to make it easy for users to discover, choose, and purchase products.",
+//     link:"https://beli-mudah.vercel.app"
+//   },
+//   {
+//     title: "ShortLik",
+//     description: `A shortlink application that allows users to create, manage, and share shortened URLs easily.`,
+//     link:"https://x-shrt.vercel.app"
+//   },
+//   {
+//     title: "Pulse",
+//     description: "A simple notes management app that helps users create, organize, and manage their notes easily.",
+//     link:"https://pulse-notex.vercel.app"
+//   },
+//   {
+//     title: "Webcc Synergix",
+//     description: "An omnichannel system to handle ticketing. Integrate Communication platform, such as WA, IG, Phone, Email and Sms.",
+//   },
+// ];
 
- function FeaturedProjects() {
-  const scrollRef = useRef(null);
+//  function FeaturedProjects() {
+//   const scrollRef = useRef(null);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' });
-    }
-  };
+//   const scrollLeft = () => {
+//     if (scrollRef.current) {
+//       scrollRef.current.scrollBy({ left: -350, behavior: 'smooth' });
+//     }
+//   };
 
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 350, behavior: 'smooth' });
-    }
-  };
+//   const scrollRight = () => {
+//     if (scrollRef.current) {
+//       scrollRef.current.scrollBy({ left: 350, behavior: 'smooth' });
+//     }
+//   };
 
-  return (
-    <section className="py-16 md:py-27 px-4 md:px-8 max-w-7xl mx-auto text-white/60">
-      {/* Header Section */}
-      <div className="flex justify-between items-end mb-8">
-        <div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-            Featured Projects
-          </h2>
-          <a href="https://github.com/bildanjhry" 
-          className="inline-flex items-center gap-1 text-sm font-medium hover:underline">
-            See github <ArrowUpRight className="w-4 h-4" />
-          </a>
-        </div>
+//   return (
+//     <section className="py-16 md:py-27 px-4 md:px-8 max-w-7xl mx-auto text-white/60">
+//       {/* Header Section */}
+//       <div className="flex justify-between items-end mb-8">
+//         <div>
+//           <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+//             Featured Projects
+//           </h2>
+//           <a href="https://github.com/bildanjhry" 
+//           className="inline-flex items-center gap-1 text-sm font-medium hover:underline">
+//             See github <ArrowUpRight className="w-4 h-4" />
+//           </a>
+//         </div>
         
-        <div className="flex gap-2">
-          <button 
-            onClick={scrollLeft} 
-            className="p-2 rounded-lg bg-white bg-linear-to-r 
-            from-neutral to-neutral-700/30 hover:bg-gray-50 text-gray-700 transition-colors"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button 
-            onClick={scrollRight} 
-            className="p-2 bg-linear-to-r 
-            from-neutral to-neutral-700/30 rounded-lg bg-white hover:bg-gray-50 
-            text-gray-700 transition-colors"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
+//         <div className="flex gap-2">
+//           <button 
+//             onClick={scrollLeft} 
+//             className="p-2 rounded-lg bg-white bg-linear-to-r 
+//             from-neutral to-neutral-700/30 hover:bg-gray-50 text-gray-700 transition-colors"
+//             aria-label="Scroll left"
+//           >
+//             <ChevronLeft className="w-5 h-5" />
+//           </button>
+//           <button 
+//             onClick={scrollRight} 
+//             className="p-2 bg-linear-to-r 
+//             from-neutral to-neutral-700/30 rounded-lg bg-white hover:bg-gray-50 
+//             text-gray-700 transition-colors"
+//             aria-label="Scroll right"
+//           >
+//             <ChevronRight className="w-5 h-5" />
+//           </button>
+//         </div>
+//       </div>
 
-      {/* Carousel Section */}
-      <div 
-        ref={scrollRef} 
-        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-      >
-        {projects.map((project, index) => (
-          <div 
-            key={index} 
-            className="min-w-[300px] group overflow-hidden md:min-w-[400px] snap-start flex flex-col"
-          >
-            {/* Image / Logo Placeholder */}
-            <div className='overflow-hidden h-80 mb-6 rounded-2xl'>
-              <div className="bg-gray-200/80 bg-linear-to-r
-              transition-all duration-300 group-hover:scale-110 
-                from-neutral to-neutral-700/30 rounded-2xl 
-                aspect-[4/3] flex items-center justify-center overflow-hidden h-80">
-                {/* Recreating the hexagonal logo with stripes */}
-                <div className="relative w-24 h-24 ">
-                  <div className="absolute inset-0 
-                  [clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]">
-                    <div className="absolute inset-0 flex">
-                      {[...Array(10)].map((_, i) => (
-                        <div key={i} className="flex-1 h-full bg-white bg-linear-to-r 
-                        from-neutral to-neutral-700/30 opacity-40" style={{width: '4px'}} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+//       {/* Carousel Section */}
+//       <div 
+//         ref={scrollRef} 
+//         className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+//       >
+//         {projects.map((project, index) => (
+//           <div 
+//             key={index} 
+//             className="min-w-[300px] group overflow-hidden md:min-w-[400px] snap-start flex flex-col"
+//           >
+//             {/* Image / Logo Placeholder */}
+//             <div className='overflow-hidden h-80 mb-6 rounded-2xl'>
+//               <div className="bg-gray-200/80 bg-linear-to-r
+//               transition-all duration-300 group-hover:scale-110 
+//                 from-neutral to-neutral-700/30 rounded-2xl 
+//                 aspect-[4/3] flex items-center justify-center overflow-hidden h-80">
+//                 {/* Recreating the hexagonal logo with stripes */}
+//                 <div className="relative w-24 h-24 ">
+//                   <div className="absolute inset-0 
+//                   [clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]">
+//                     <div className="absolute inset-0 flex">
+//                       {[...Array(10)].map((_, i) => (
+//                         <div key={i} className="flex-1 h-full bg-white bg-linear-to-r 
+//                         from-neutral to-neutral-700/30 opacity-40" style={{width: '4px'}} />
+//                       ))}
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
             
-            {/* Card Content */}
-            <h3 className="text-2xl font-semibold  mb-3">
-              {project.title}
-            </h3>
-            <p className="text-white/40 leading-relaxed mb-6">
-              {project.description}
-            </p>
+//             {/* Card Content */}
+//             <h3 className="text-2xl font-semibold  mb-3">
+//               {project.title}
+//             </h3>
+//             <p className="text-white/40 leading-relaxed mb-6">
+//               {project.description}
+//             </p>
             
-            <div className="flex items-center gap-3">
-              <a 
-              className='h-9 w-fit px-2 gap-2 rounded-full flex justify-center items-center 
-               border-white/20 text-[14px]'
-              href="">
-                <LuGithub/>
-                <p>Source</p>
-              </a>
-              <a href={project?.link} 
-              target="_blank"
-              className="mt-auto bg-white text-black border w-25 flex 
-              justify-center h-9 rounded-full items-center gap-2 font-medium 
-              text-[14px] hover:gap-3 transition-all bg-linear-to-r 
-                from-neutral to-neutral-700/30">
-                Visit <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+//             <div className="flex items-center gap-3">
+//               <a 
+//               className='h-9 w-fit px-2 gap-2 rounded-full flex justify-center items-center 
+//                border-white/20 text-[14px]'
+//               href="">
+//                 <LuGithub/>
+//                 <p>Source</p>
+//               </a>
+//               <a href={project?.link} 
+//               target="_blank"
+//               className="mt-auto bg-white text-black border w-25 flex 
+//               justify-center h-9 rounded-full items-center gap-2 font-medium 
+//               text-[14px] hover:gap-3 transition-all bg-linear-to-r 
+//                 from-neutral to-neutral-700/30">
+//                 Visit <ArrowUpRight className="w-4 h-4" />
+//               </a>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
 
 function WarpShaderHero() {
@@ -427,121 +428,8 @@ function BackgroundPaths({ title }) {
 }
 
 
-import { Compass, Clock, Heart } from 'lucide-react';
-import { MdOutlineWorkOutline } from "react-icons/md";
-import { RiPushpin2Line } from "react-icons/ri";
-
-const journeySteps = [
-  { 
-    id: 1, 
-    title: "Koda Tech Academy",
-    type:"Project Based",
-    duration:"May 2026 - Aug 2026",
-    role:"Fullstack Engineer",
-    description:
-    [
-      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
-      'Integrated product listing, cart management, and user authentication using JWT.',
-      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
-      'Implementing REST API with Gin-gonic and Express.js.',
-      'Use PostgreSQL with database migrations.'
-    ],
-    icon: RiPushpin2Line },
-  { 
-    id: 2, 
-    title: "Jaring Synergi Mandiri",
-    type:"Fulltime", 
-    duration:"Jan 2023 - Jan 2025",
-    role:"Frontend Developer",
-    description:
-    [
-      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
-      'Integrated product listing, cart management, and user authentication using JWT.',
-      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
-      'Implementing REST API with Gin-gonic and Express.js.',
-      'Use PostgreSQL with database migrations.'
-    ], icon: RiPushpin2Line },
-  { 
-    id: 3, 
-    title: "Dumbways.id", 
-    type:"Project Based",
-    duration:"Sep 2022",
-    role:"Fullstack Developer",
-    description:
-    [
-      'Developed a full-featured e-commerce platform with responsive design for both mobile and desktop users.',
-      'Integrated product listing, cart management, and user authentication using JWT.',
-      'Built a modular frontend using React.js, Tailwind CSS, React Router, and Redux Toolkit, with role-based access for users and admins.',
-      'Implementing REST API with Gin-gonic and Express.js.',
-      'Use PostgreSQL with database migrations.'
-    ], icon: RiPushpin2Line },
-];
-
-function JourneyTimeline() {
-  return (
-    <div className='w-full flex justify-center my-10'>
-      <section className="py-16 px-4 md:px-1  w-[80%]">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-white/60 mb-4 tracking-tight">
-            The experiences journey
-          </h2>
-          <p className="text-white/60 max-w-2xl text-lg">
-            My experiences journey so far.
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Central Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/40 transform -translate-x-1/2" />
-
-          <div className="space-y-12">
-            {journeySteps.map((step, index) => (
-              <div key={step.id} className={`relative flex flex-col md:flex-row items-start gap-4 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'}`}>
-                
-                {/* Icon Node */}
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 bg-white
-                 bg-linear-to-r from-neutral-300/60 to-neutral-950/30 
-                 p-2 rounded-full border border-white/30 z-10">
-                  <div className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center">
-                    <step.icon className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Content Card */}
-                <div className={`ml-12 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:pr-1' : 'md:pl-1'}`}>
-                  <div className="bg-linear-to-r from-neutral-900 to-neutral-950 
-                  hover:bg-gray-100 transition-colors p-7 rounded-2xl border border-neutral-800 shadow-sm">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-semibold text-white/60 tracking-wide">{step.type}</span>
-                      <span className='text-sm font-semibold text-white/60 tracking-wide'>{step.duration}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-white/60 ">{step.title}</h3>
-                    <p className=' text-white/70 mb-4'>{step.role}</p>
-                    <ul className='flex flex-col gap-2'>
-                      {step.description.map((item, index) => (
-                        <li key={index} className='text-white/50 leading-relaxed flex gap-2'>
-                          <div className='h-5 w-5 relative mt-3
-                          shrink-0 rounded-full flex justify-center items-center text-black/70 bg-white bg-linear-to-r from-neutral-200 to-neutral-400'>
-                          <RiPushpin2Line size={12} className='shrink-0 relative'/>
-
-                          </div>
-                          <p className='bg-amber-50/5 
-                        py-2 px-3 rounded-lg '>{item}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-    </div>
-  );
-}
-
+// import { Compass, Clock, Heart } from 'lucide-react';
+// import { MdOutlineWorkOutline } from "react-icons/md";
 
 // ==================== BUTTON COMPONENT ====================
 const Button = React.forwardRef(({ 
@@ -1065,11 +953,11 @@ function SchemaCard() {
  
           <div className="flex items-center justify-center gap-6">
             {[
-              { icon: LuGithub, label: "Github" },
-              { icon: FaLinkedinIn, label: "LinkedIn" },
-              { icon: FaWhatsapp, label: "Whatsapp" },
-            ].map(({ icon: Icon, label }) => (
-              <a key={label} href="#" aria-label={label} 
+              { icon: LuGithub, label: "Github", link:"https://github.com/bildanjhry" },
+              { icon: FaLinkedinIn, label: "LinkedIn", link:"https://www.linkedin.com/in/bildan-jauhary" },
+              { icon: FaWhatsapp, label: "Whatsapp", link:"#" },
+            ].map(({ icon: Icon, label, link }) => (
+              <a key={label} href={link} aria-label={label} 
               className="text-white/30 hover:text-white/70
                transition-colors">
                 <Icon className="w-5 h-5" />
